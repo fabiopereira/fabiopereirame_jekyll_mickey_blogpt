@@ -4,12 +4,12 @@ markdown:            redcarpet
 highlighter:         pygments
 
 # Permalinks
-permalink:           /blog/:year/:month/:day/:title
+permalink:           /blogpt/:year/:month/:day/:title
 relative_permalinks: true
 
 # Setup
 timezone:            Asia/Sydney # eg. Asia/Kathmandu
-locale:              en_us # eg. en_us
+locale:              pt_br # eg. en_us
 name:				         Fabio Pereira
 title:               'Fabio Pereira'
 tagline:             'Go see, ask why, show respect'
