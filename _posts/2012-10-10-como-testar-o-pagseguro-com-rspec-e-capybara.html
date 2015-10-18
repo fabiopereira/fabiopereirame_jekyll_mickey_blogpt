@@ -1,0 +1,31 @@
+---
+layout: post
+status: publish
+published: true
+title: Como Testar o PagSeguro com RSpec e Capybara
+author:
+  display_name: admin
+  login: admin
+  email: fabiopereira.me@gmail.com
+  url: http://
+author_login: admin
+author_email: fabiopereira.me@gmail.com
+author_url: http://
+wordpress_id: 443
+wordpress_url: http://fabiopereira.me/blogpt/?p=443
+date: '2012-10-10 14:55:17 +1100'
+date_gmt: '2012-10-10 21:55:17 +1100'
+categories:
+- Uncategorized
+tags:
+- goalnect rails
+comments: []
+---
+<p>Recentemente come&ccedil;amos a implementar o payment gateway do <a title="Goalnect" href="http://www.goalnect.com.br" target="_blank">Goalnect</a>.&nbsp;Resolvemos usar o <a href="https://pagseguro.uol.com.br/#rmcl">PagSeguro do UOL</a> e encontramos <a href="https://github.com/fnando/pagseguro">este plugin</a> que facilitou muito a nossa vida j&aacute; que usamos Ruby on Rails.</p>
+<p>Como bons desenvolvedores que somos, estamos testando o nosso c&oacute;digo e precis&aacute;vamos simular (stub) uma notifica&ccedil;&atilde;o do PagSeguro.O plugin nos ajudou pois disponibiliza uma task rake para isso, mas precis&aacute;vamos chamar isso de um rspec.</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" title="pagseguro-goalnect-rspec-integracao.png" src="http://fabiopereira.me/blogpt/wp-content/uploads/2012/10/pagseguro-goalnect-rspec-integracao.png" border="0" alt="Pagseguro goalnect rspec integracao" width="600" height="300" /></p>
+<p>Conseguimos isso com 4 linhas de c&oacute;digo</p>
+<pre>uri = URI.parse(current_url) # Capybara disponibiliza o current_url<br />
+PagSeguro.config["base"] = "#{uri.scheme}://#{uri.host}:#{uri.port}"<br />
+ENV["ID"] = # Coloque aqui o seu ID enviado para o PagSeguro<br />
+PagSeguro::Rake.run</pre></p>
